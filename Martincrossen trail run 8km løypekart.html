@@ -225,49 +225,6 @@
 }
             ).addTo(map_03791b64d8fb14cd79801d8b1d427b68);
 
-const vaktkart = map_03791b64d8fb14cd79801d8b1d427b68;
 
-const vaktposter = [
-  ["1A", 59.96161, 10.64382],
-  ["1B", 59.96021, 10.64537],
-  ["2", 59.95447, 10.64754],
-  ["3", 59.95182, 10.64766],
-  ["4", 59.94179, 10.65202],
-  ["5", 59.93703, 10.65658],
-  ["6", 59.93610, 10.65742],
-  ["7", 59.93442, 10.65852],
-  ["8", 59.93153, 10.65948],
-  ["9", 59.93446, 10.65850],
-  ["10", 59.94135, 10.65169],
-  ["11A", 59.95936, 10.64318],
-  ["11B", 59.95767, 10.64347]
-];
-
-vaktposter.forEach(([nummer, lat, lon]) => {
-  const venstre = ["2", "3", "9", "10", "11A", "11B"].includes(nummer);
-
-  const forskyvning =
-    nummer === "7" ? [18, -12] :
-    nummer === "9" ? [-18, 12] :
-    [venstre ? -10 : 10, 0];
-
-  L.circleMarker([lat, lon], {
-    radius: 7,
-    color: "#17384b",
-    weight: 2,
-    fillColor: "#ffdf42",
-    fillOpacity: 1
-  })
-  .addTo(vaktkart)
-  .bindTooltip(
-    nummer === "3" ? "3 · Snu 3 km" : nummer,
-    {
-      permanent: true,
-      direction: venstre ? "left" : "right",
-      offset: forskyvning
-    }
-  )
-  .bindPopup("Løypevaktpost " + nummer);
-});        
 </script>
 </html>
